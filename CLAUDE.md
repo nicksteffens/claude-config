@@ -1,0 +1,131 @@
+Claude Development Rules for Movable Ink
+
+Claude Development Rules for Movable Ink
+
+# Claude Development Rules
+
+**Gist ID:** `1bff3d1daf7cab6698e6a8f56eed4fee`  
+**Gist URL:** https://gist.github.com/nicksteffens/1bff3d1daf7cab6698e6a8f56eed4fee  
+**Update Command:** `gh gist edit 1bff3d1daf7cab6698e6a8f56eed4fee`
+
+## Automatic Workflow Protocols
+
+### SESSION START PROTOCOL
+**When entering a new repository directory:** ALWAYS automatically run `/repo-assess` to check:
+- Package manager configuration (volta/npm/yarn)
+- Git branch safety and create feature branch if needed
+- Pre-commit hooks and commit message requirements
+- Pull request templates
+- Testing commands
+- Existing issues/PRs to avoid duplicates
+
+### SESSION END PROTOCOL
+**At the end of each development session:** ALWAYS prompt user to run `/daily-log` to update the session log with:
+- Main objectives accomplished
+- Session duration and success rating
+- Challenges encountered and lessons learned
+- Follow-up items for future sessions
+
+## Pre-Approved Permissions
+
+### Automatic Actions (No Ask Required)
+- **File operations**: Read, edit, create files in current working directory and subdirectories
+- **Git operations**: Status, diff, log, branch creation, commits, push to feature branches
+- **Package management**: Install, update, run scripts (after volta config check)
+- **GitHub CLI**: Issue viewing, PR creation, repository operations for our work
+- **Testing**: Run tests, linting, type checking, builds
+- **Shortcut MCP**: Story updates, task completion, iteration management
+- **Gist operations**: Follow the approved gist workflow (see below)
+- **File deletion**: ALWAYS use `trash` command, NEVER use `rm` for safety
+
+### Gist Edit Workflow (Always Follow This Process)
+1. **Download**: `gh gist view {ID} --raw > /tmp/{NewFileName}.md`
+2. **Edit**: Make changes to the local `/tmp/{NewFileName}.md` file
+3. **Upload**: `gh gist edit {ID} /tmp/{NewFileName}.md`
+4. **Confirm**: Verify changes with `gh gist view {ID}` 
+5. **Cleanup**: Use `trash /tmp/{NewFileName}.md` (never `rm` for safety)
+
+### Safety Checks (Always Ask First)
+- **Merging PRs**: Never merge PRs we didn't create without explicit permission
+- **Deleting**: Files, branches, or any destructive operations
+- **Publishing**: NPM packages, deployments, releases
+- **Main branch commits**: Always blocked - create feature branch instead
+- **External API calls**: Beyond GitHub/Shortcut for our development work
+
+### Preferred Behavior
+- **Be proactive**: Make reasonable implementation decisions without asking
+- **Batch questions**: Ask multiple related questions together when possible
+- **Explain actions**: Briefly describe what you're doing for complex operations
+- **Course correct**: If I say stop or change direction, adapt immediately
+
+## Repository Assessment (ALWAYS DO FIRST)
+
+### 1. Package Manager Detection
+- **ALWAYS check `package.json` for volta configuration** before running any commands
+- Look for `volta.node` and `volta.yarn` or `volta.npm` fields
+- **Rule**: If volta specifies yarn, use `yarn` commands. If no yarn specified, use `npm`
+- Check for `packageManager` field as backup indicator
+- Never assume - always verify before running package commands
+
+### 2. Pre-commit and Git Hooks
+- **ALWAYS check for `.husky/` directory** and examine hook files
+- Read `pre-commit` and `commit-msg` hook scripts to understand requirements
+- **ALWAYS use conventional commit format** without being reminded
+- Follow the exact format expected by the repository's commitlint configuration
+
+### 3. Pull Request Templates
+- **Check for `.github/pull_request_template.md`** or `PULL_REQUEST_TEMPLATE.md` in repo root
+- Read template structure and follow all required sections
+- Include summary, test plan, and any other sections specified
+
+### 4. Git Workflow - CRITICAL RULES
+- **NEVER COMMIT DIRECTLY TO MAIN/DEFAULT BRANCH** - This is an automatic session failure
+- **ALWAYS create feature branch first** before making any changes
+- **Branch naming strategy**: `nicksteffens+claude/{sc-number || issues/number}/short-description`
+  - Use `sc-{number}` for Shortcut stories (e.g. `nicksteffens+claude/sc-165234/fix-user-invitations`)
+  - Use `issues/{number}` for GitHub issues (e.g. `nicksteffens+claude/issues/369/remove-empty-state-margins`)
+- **Workflow**: 
+  1. `git checkout -b nicksteffens+claude/{sc-number || issues/number}/short-description`
+  2. Make changes and commit to feature branch
+  3. Push feature branch: `git push -u origin branch-name`
+  4. Create PR from feature branch to main
+- **If you accidentally commit to main**: Stop immediately, revert, and start over with proper branch
+
+### 5. Commit Frequency and Best Practices
+- **Commit Early and Often**: Make small, focused commits rather than large, monolithic ones
+- **Atomic Commits**: Each commit should represent a single logical change that:
+  - Can be understood in isolation
+  - Doesn't break the build or tests
+  - Could be reverted without affecting unrelated functionality
+- **Commit Frequency Guidelines**:
+  - After completing each discrete task or subtask
+  - When switching context to a different part of the codebase
+  - Before attempting risky refactors or experiments
+  - At natural stopping points (even if feature isn't complete)
+  - When tests pass after fixing them
+- **Progressive Enhancement**: Build features incrementally with commits like:
+  - `feat: add basic user model structure`
+  - `feat: implement user validation logic`
+  - `test: add unit tests for user validation`
+  - `feat: add user API endpoints`
+  - `docs: update API documentation for user endpoints`
+- **Work-in-Progress Commits**: Use commits to save progress, can be squashed later if needed
+- **Never Leave Code Broken**: Each commit should leave the codebase in a working state
+
+### 6. GitHub Operations - CLI FIRST APPROACH
+- **ALWAYS use `gh` CLI first** before MCP or WebFetch for GitHub operations
+- **Issue investigation**: `gh issue view <number>` instead of web scraping
+- **PR creation**: `gh pr create` following repository templates
+- **CRITICAL SAFETY**: Never merge PRs you and I didn't author without explicit permission
+  - Check author: `gh pr view <number> --json author`
+  - Only merge our own work unless explicitly told otherwise
+- **Tool hierarchy**: gh CLI → GitHub MCP → WebFetch (last resort)
+
+### 7. Documentation Research Priority
+- **NPM packages**: ALWAYS check npm official documentation first before web searching
+- **Sequence**: npm docs → package README → web search (last resort)
+- **Use official sources**: Prefer authoritative documentation over tutorials or blog posts
+
+---
+
+**Core Principle: Always discover the repository's conventions by reading its configuration files, never assume or hardcode rules.**
