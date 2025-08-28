@@ -4,20 +4,10 @@ Update the daily log in the repository at the end of each session.
 
 ## Usage
 ```
-/daily-log [--manual]
-```
-
-### Autonomous Mode (Default)
-```
 /daily-log
 ```
-Claude handles the daily log workflow autonomously with branch safety checks. Still requires user input for session assessment and rating. This is the recommended mode for regular use.
 
-### Manual Mode
-```
-/daily-log --manual
-```
-Step-by-step manual workflow for debugging or when you need to control each step individually.
+Executes safety checks then hands off to the daily-log-agent for autonomous workflow execution. The agent handles content generation while you provide session assessment and rating.
 
 ## Repository Structure
 Daily logs are now organized in the repository under `daily-logs/` directory:
@@ -93,15 +83,11 @@ if [[ -f "$daily_log_file" ]] && grep -q "## $today" "$daily_log_file"; then
 fi
 ```
 
-### Execution Mode Detection
+### Agent Handoff
 ```bash
-# Default to autonomous mode unless --manual specified
-if [[ "$1" == "--manual" ]]; then
-  echo "📋 Manual daily-log execution - step-by-step workflow"
-else
-  echo "🤖 Autonomous daily-log execution - Claude will handle workflow"
-  exit 0  # Signal to Claude to take over
-fi
+# After safety checks pass, hand off to daily-log-agent
+echo "🤖 Daily log agent will handle workflow"
+exit 0  # Signal for daily-log-agent to take over
 ```
 
 1. **Determine current month file**: Based on today's date (e.g., `daily-logs/2025/2025-08.md`)
