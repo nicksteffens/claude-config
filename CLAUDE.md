@@ -1,12 +1,7 @@
-Claude Development Rules for Movable Ink
+# Claude Development Rules for Movable Ink
 
-Claude Development Rules for Movable Ink
-
-# Claude Development Rules
-
-**Gist ID:** `1bff3d1daf7cab6698e6a8f56eed4fee`  
-**Gist URL:** https://gist.github.com/nicksteffens/1bff3d1daf7cab6698e6a8f56eed4fee  
-**Update Command:** `gh gist edit 1bff3d1daf7cab6698e6a8f56eed4fee`
+**Repository:** https://github.com/nicksteffens/claude-config  
+**Documentation:** See `/docs/` directory for detailed guides
 
 ## Automatic Workflow Protocols
 
@@ -20,37 +15,24 @@ Claude Development Rules for Movable Ink
 - Existing issues/PRs to avoid duplicates
 
 ### SESSION END PROTOCOL
-**At the end of each development session:** ALWAYS prompt user to run `/daily-log` to update the session log with:
-- Main objectives accomplished
-- Session duration and success rating
+**At the end of each development session:** Use the `daily-log-agent` to autonomously create session logs with:
+- Main objectives accomplished  
+- Session duration and success rating (provided by user)
 - Challenges encountered and lessons learned
 - Follow-up items for future sessions
 
-## Pre-Approved Permissions
+## Permissions Overview
 
-### Automatic Actions (No Ask Required)
-- **File operations**: Read, edit, create files in current working directory and subdirectories
-- **Git operations**: Status, diff, log, branch creation, commits, push to feature branches
-- **Package management**: Install, update, run scripts (after volta config check)
-- **GitHub CLI**: Issue viewing, PR creation, repository operations for our work
-- **Testing**: Run tests, linting, type checking, builds
-- **Shortcut MCP**: Story updates, task completion, iteration management
-- **Gist operations**: Follow the approved gist workflow (see below)
+**See `settings.json`** for complete tool permissions configuration including:
+- Auto-approved tools (allow list)
+- Prohibited actions (deny list) 
+- Interactive confirmations (ask list)
+
+### Key Safety Rules
 - **File deletion**: ALWAYS use `trash` command, NEVER use `rm` for safety
-
-### Gist Edit Workflow (Always Follow This Process)
-1. **Download**: `gh gist view {ID} --raw > /tmp/{NewFileName}.md`
-2. **Edit**: Make changes to the local `/tmp/{NewFileName}.md` file
-3. **Upload**: `gh gist edit {ID} /tmp/{NewFileName}.md`
-4. **Confirm**: Verify changes with `gh gist view {ID}` 
-5. **Cleanup**: Use `trash /tmp/{NewFileName}.md` (never `rm` for safety)
-
-### Safety Checks (Always Ask First)
 - **Merging PRs**: Never merge PRs we didn't create without explicit permission
-- **Deleting**: Files, branches, or any destructive operations
-- **Publishing**: NPM packages, deployments, releases
 - **Main branch commits**: Always blocked - create feature branch instead
-- **External API calls**: Beyond GitHub/Shortcut for our development work
+- **Publishing**: NPM packages, deployments, releases require explicit permission
 
 ### Preferred Behavior
 - **Be proactive**: Make reasonable implementation decisions without asking
