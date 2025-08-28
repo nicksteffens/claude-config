@@ -43,11 +43,13 @@ Slash commands are invoked by typing `/command-name` in Claude Code. Available c
 Specialized agents for complex tasks:
 
 - **`frontend-architecture-lead (pfe)`** - Expert guidance on frontend architecture, infrastructure, and technical decisions
+- **`pr-reviewer`** - Autonomous pull request reviews with design system compliance and quality gates
 
 ### Using Agents
 ```
 ask pfe how should I structure this new component?
 ask pfe what's the best way to handle this API integration?
+ask pr-reviewer to review PR #9789
 ```
 
 ## Daily Log

@@ -5,8 +5,20 @@ Comprehensive pull request review workflow with Shortcut integration and cross-r
 
 ## Usage
 ```
-/pr-review <PR_NUMBER> [--repo <REPO_PATH>]
+/pr-review <PR_NUMBER> [--repo <REPO_PATH>] [--agent]
 ```
+
+### Agent Mode (Recommended)
+```
+/pr-review <PR_NUMBER> --agent
+```
+Uses the `pr-reviewer` agent for autonomous execution of the entire review workflow with consistent quality standards and design system enforcement.
+
+### Manual Mode
+```
+/pr-review <PR_NUMBER>
+```
+Step-by-step manual workflow for learning or debugging purposes.
 
 ## Steps
 
