@@ -8,11 +8,9 @@ This directory contains our collaborative session logs, migrated from gist to pr
 daily-logs/
 ├── README.md            # This file
 ├── template.md          # Template questions and format
-├── 2025/
-│   ├── 2025-08.md      # August 2025 entries
-│   └── index.md        # 2025 overview
-└── scripts/
-    └── migrate-gist.sh  # Migration script (historical)
+└── 2025/
+    ├── 2025-08.md      # August 2025 entries
+    └── index.md        # 2025 overview
 ```
 
 ## Usage
