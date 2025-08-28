@@ -12,6 +12,7 @@ ide/
 *.cache
 *.tmp
 *.log
+.update.lock
 
 # OS generated files
 .DS_Store
