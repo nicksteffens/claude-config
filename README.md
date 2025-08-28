@@ -64,6 +64,12 @@ Our collaborative sessions are systematically documented to track progress, insi
 
 See [daily-logs/README.md](daily-logs/README.md) for complete documentation and usage instructions.
 
+## Documentation
+
+Additional setup guides and documentation:
+
+- **[Shortcut MCP Setup](docs/shortcut-mcp-setup.md)** - Configure Shortcut integration for story management and workflow automation
+
 ## Development Rules
 
 See `CLAUDE.md` for detailed development protocols including:
