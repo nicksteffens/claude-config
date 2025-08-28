@@ -1,12 +1,12 @@
 # Add Standard Reviewers Command
 
-Adds JessWallin and Sh1pley as reviewers to the current PR.
+Adds JessWallin, Sh1pley, and movableink/studio-core-team as reviewers to the current PR.
 
 ## Steps
 
 1. Get the current branch name
 2. Find the PR number for the current branch
-3. Add JessWallin and Sh1pley as reviewers
+3. Add JessWallin, Sh1pley, and movableink/studio-core-team as reviewers
 
 ## Command Execution
 
@@ -26,10 +26,10 @@ fi
 echo "📝 Adding reviewers to PR #$PR_NUMBER..."
 
 # Add reviewers
-gh pr edit "$PR_NUMBER" --add-reviewer JessWallin,Sh1pley
+gh pr edit "$PR_NUMBER" --add-reviewer JessWallin,Sh1pley,movableink/studio-core-team
 
 if [ $? -eq 0 ]; then
-  echo "✅ Successfully added JessWallin and Sh1pley as reviewers to PR #$PR_NUMBER"
+  echo "✅ Successfully added JessWallin, Sh1pley, and movableink/studio-core-team as reviewers to PR #$PR_NUMBER"
   echo "🔗 PR URL: https://github.com/movableink/front-end/pull/$PR_NUMBER"
 else
   echo "❌ Failed to add reviewers"
