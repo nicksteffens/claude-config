@@ -1,9 +1,5 @@
 # Daily Log Update Slash Command
 
-**Gist ID:** `67debfc543e93cb2f5bbf6f481256d06`  
-**Gist URL:** https://gist.github.com/nicksteffens/67debfc543e93cb2f5bbf6f481256d06  
-**Update Command:** `gh gist edit 67debfc543e93cb2f5bbf6f481256d06`
-
 Update the daily log gist at the end of each session.
 
 ## Gist Information

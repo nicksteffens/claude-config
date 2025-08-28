@@ -1,9 +1,5 @@
 # GitHub Workflow Slash Command
 
-**Gist ID:** `9296d3dc6a59e106e2dcac24c193c234`  
-**Gist URL:** https://gist.github.com/nicksteffens/9296d3dc6a59e106e2dcac24c193c234  
-**Update Command:** `gh gist edit 9296d3dc6a59e106e2dcac24c193c234`
-
 Optimized GitHub operations using CLI-first approach, MCP as fallback.
 
 ## Tool Preference Hierarchy
