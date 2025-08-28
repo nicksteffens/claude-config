@@ -1,5 +1,9 @@
 # Repository Assessment Slash Command
 
+**Gist ID:** `e94be4a40a691ec79471e2a0bb243c37`  
+**Gist URL:** https://gist.github.com/nicksteffens/e94be4a40a691ec79471e2a0bb243c37  
+**Update Command:** `gh gist edit e94be4a40a691ec79471e2a0bb243c37`
+
 You are starting work in a new repository. **ALWAYS** perform these checks in order before making any changes:
 
 ## 1. Package Manager Detection

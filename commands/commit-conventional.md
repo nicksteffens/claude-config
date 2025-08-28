@@ -1,5 +1,9 @@
 # Conventional Commit Slash Command
 
+**Gist ID:** `bc666fda8eeece2f0f700016b18b8199`  
+**Gist URL:** https://gist.github.com/nicksteffens/bc666fda8eeece2f0f700016b18b8199  
+**Update Command:** `gh gist edit bc666fda8eeece2f0f700016b18b8199`
+
 Guide for creating proper conventional commits following repository standards.
 
 ## Conventional Commit Format

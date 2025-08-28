@@ -1,5 +1,9 @@
 # Branch Creation Slash Command
 
+**Gist ID:** `58712453df0352263785f2678aca4683`  
+**Gist URL:** https://gist.github.com/nicksteffens/58712453df0352263785f2678aca4683  
+**Update Command:** `gh gist edit 58712453df0352263785f2678aca4683`
+
 Create a new feature branch following the established naming convention.
 
 ## Branch Naming Convention
