@@ -50,6 +50,20 @@ ask pfe how should I structure this new component?
 ask pfe what's the best way to handle this API integration?
 ```
 
+## Daily Log
+
+Our collaborative sessions are systematically documented to track progress, insights, and lessons learned. Each session includes objectives, accomplishments, challenges, and follow-up items with performance ratings.
+
+**Key Features:**
+- Organized by year and month for easy navigation
+- Standardized template questions ensure comprehensive coverage
+- Version controlled for historical tracking and analysis
+- Migrated from gist to repository structure (August 2025)
+
+**Usage:** Run `/daily-log` at the end of each session to update the current month's log file.
+
+See [daily-logs/README.md](daily-logs/README.md) for complete documentation and usage instructions.
+
 ## Development Rules
 
 See `CLAUDE.md` for detailed development protocols including:
