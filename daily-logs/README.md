@@ -16,10 +16,31 @@ daily-logs/
 ## Usage
 
 ### Adding New Entries
-Use the `/daily-log` command at the end of each session. The command will:
-1. Ask the template questions from `template.md`
-2. Add the entry to the current month's file
-3. Create new monthly files as needed
+Use the `/daily-log` command or `daily-log-agent` at the end of each session:
+
+#### Option 1: Command + Agent (Recommended)
+```bash
+/daily-log
+```
+- Executes safety checks (branch verification, duplicate detection)
+- Hands off to `daily-log-agent` for autonomous workflow
+- Agent extracts session context and handles file operations
+- User provides only assessment and rating
+
+#### Option 2: Direct Agent
+```bash
+ask daily-log-agent to log today's session
+```
+- Bypasses safety checks for direct autonomous logging
+- Agent handles complete workflow autonomously
+- User provides session assessment and rating
+
+### Workflow Process
+1. **Safety Checks**: Branch safety, duplicate session detection (command only)
+2. **Context Extraction**: Agent analyzes conversation for objective, duration, accomplishments
+3. **Content Generation**: Agent creates formatted log entry with session details
+4. **User Assessment**: Agent asks for rating, challenges, insights, follow-up items
+5. **File Operations**: Agent updates monthly file and commits changes
 
 ### Finding Sessions
 - **Recent sessions**: Check current month file (e.g., `2025/2025-08.md`)
