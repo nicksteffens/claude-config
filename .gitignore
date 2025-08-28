@@ -6,6 +6,7 @@ projects/
 todos/
 shell-snapshots/
 statsig/
+ide/
 
 # Cache and temporary files
 *.cache
