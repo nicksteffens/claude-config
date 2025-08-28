@@ -24,7 +24,7 @@ You are starting work in a new repository. **ALWAYS** perform these checks in or
 - Follow the exact format expected by the repository's commitlint configuration
 
 ## 4. Pull Request Templates
-- Check for `.github/pull_request_template.md` or `PULL_REQUEST_TEMPLATE.md` in repo root
+- Check for `PULL_REQUEST_TEMPLATE.md` in repo root or `.github/pull_request_template.md`
 - Read template structure and follow all required sections
 - Include summary, test plan, and any other sections specified
 
