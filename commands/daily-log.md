@@ -3,8 +3,8 @@
 Update the daily log gist at the end of each session.
 
 ## Gist Information
-- **Gist ID**: `5e2da7e26d47e0e734935cdcdbb1df73`
-- **Update Command**: `gh gist edit 5e2da7e26d47e0e734935cdcdbb1df73`
+- **Daily Log Data Gist ID**: `5e2da7e26d47e0e734935cdcdbb1df73`
+- **Data Update Command**: `gh gist edit 5e2da7e26d47e0e734935cdcdbb1df73`
 
 ## Process
 1. **Download current log**: `gh gist view 5e2da7e26d47e0e734935cdcdbb1df73 --raw > /tmp/daily-log.md`
