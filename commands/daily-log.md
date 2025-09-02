@@ -17,7 +17,25 @@ Daily logs are now organized in the repository under `daily-logs/` directory:
 
 ## Process
 
-### Branch Safety Check (Always First)
+### Directory Setup (Always First)
+```bash
+# Ensure we're working in the ~/.claude directory
+claude_dir="$HOME/.claude"
+if [[ ! -d "$claude_dir" ]]; then
+  echo "❌ ~/.claude directory not found"
+  echo "Please ensure the claude-config repository is cloned to ~/.claude"
+  exit 1
+fi
+
+# Change to ~/.claude directory for all operations
+cd "$claude_dir" || {
+  echo "❌ Failed to change to ~/.claude directory"
+  exit 1
+}
+echo "📁 Working in ~/.claude directory"
+```
+
+### Branch Safety Check
 ```bash
 # Check if we're on main/master branch
 current_branch=$(git branch --show-current)
