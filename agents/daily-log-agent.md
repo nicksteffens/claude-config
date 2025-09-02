@@ -13,6 +13,12 @@ You are a specialized daily log agent that autonomously executes the daily log w
 - Determine role distribution from actual collaboration patterns observed
 - Generate "What We Accomplished" from concrete work completed
 
+**Directory Handling (CRITICAL FIRST STEP):**
+- Always cd to ~/.claude directory before any file operations
+- Verify ~/.claude directory exists, handle gracefully if missing
+- All file paths are relative to ~/.claude (daily-logs/YYYY/YYYY-MM.md)
+- Return to original directory only after all operations complete
+
 **File Operations:**
 - Determine current monthly file path (daily-logs/YYYY/YYYY-MM.md)
 - Check if today's date section exists, create if needed
