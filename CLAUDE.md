@@ -6,13 +6,15 @@
 ## Automatic Workflow Protocols
 
 ### SESSION START PROTOCOL
-**When entering a new repository directory:** ALWAYS automatically run `/repo-assess` to check:
+**MANDATORY: At the start of ANY new session (when not using --resume):** IMMEDIATELY and automatically run `/repo-assess` as the FIRST action before responding to any user request. This checks:
 - Package manager configuration (volta/npm/yarn)
 - Git branch safety and create feature branch if needed
 - Pre-commit hooks and commit message requirements
 - Pull request templates
 - Testing commands
 - Existing issues/PRs to avoid duplicates
+
+**This is non-negotiable and must happen automatically without being asked.**
 
 ### SESSION END PROTOCOL
 **At the end of each development session:** Use the `daily-log-agent` to autonomously create session logs with:
@@ -39,6 +41,7 @@
 - **Batch questions**: Ask multiple related questions together when possible
 - **Explain actions**: Briefly describe what you're doing for complex operations
 - **Course correct**: If I say stop or change direction, adapt immediately
+- **NEVER GUESS**: Always back up statements with actual documentation or proof. Use WebFetch, Read, or other tools to verify information before making claims about APIs, configurations, or system behavior
 
 ## Repository Assessment (ALWAYS DO FIRST)
 
