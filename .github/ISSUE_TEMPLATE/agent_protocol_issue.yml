@@ -1,0 +1,99 @@
+name: Agent Protocol Issue
+description: Specialized template for agent behavior problems and protocol violations
+title: "[AGENT] "
+labels: ["bug", "type: agent"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for issues specific to agent behavior, protocol violations, or autonomous workflow problems.
+
+  - type: dropdown
+    id: agent_type
+    attributes:
+      label: Agent Type
+      description: Which agent is experiencing issues?
+      options:
+        - daily-log-agent
+        - pr-reviewer
+        - frontend-architecture-lead (pfe)
+        - general-purpose
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: protocol_violation
+    attributes:
+      label: Protocol Violation Details
+      description: What protocol or expected behavior was violated?
+      placeholder: |
+        - Agent provided ratings when it should only collect them
+        - Agent changed repositories without permission
+        - Agent performed actions outside its scope
+    validations:
+      required: true
+
+  - type: textarea
+    id: session_context
+    attributes:
+      label: Session Context
+      description: What was happening when the issue occurred?
+      placeholder: |
+        - Command invoked: /daily-log, ask pfe, etc.
+        - Session objective
+        - Working directory/repository context
+        - Point in workflow where issue occurred
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Session logs, agent responses, or observable behavior
+      placeholder: |
+        From daily log entry:
+        > "Agent self-rated 9/10 before user assessment"
+        
+        Or describe specific agent responses/actions
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Protocol Violation Severity
+      description: How serious is this protocol breach?
+      options:
+        - Critical (core protocol violation, system integrity risk)
+        - High (workflow disruption, requires immediate fix)
+        - Medium (behavior inconsistency, should be addressed)
+    validations:
+      required: true
+
+  - type: textarea
+    id: required_fixes
+    attributes:
+      label: Required Fixes
+      description: What needs to be changed to prevent this issue?
+      placeholder: |
+        - [ ] Update agent instructions to be more explicit about boundaries
+        - [ ] Add validation/rejection logic for prohibited actions
+        - [ ] Improve error handling for edge cases
+        - [ ] Add confirmation prompts for sensitive operations
+    validations:
+      required: true
+
+  - type: textarea
+    id: prevention
+    attributes:
+      label: Prevention Strategy
+      description: How can we prevent similar issues in the future?
+      placeholder: |
+        - Better guardrails in agent configuration
+        - Additional validation checks
+        - Clearer protocol documentation
+        - Testing scenarios for edge cases
+    validations:
+      required: false

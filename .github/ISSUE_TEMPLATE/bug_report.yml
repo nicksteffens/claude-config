@@ -1,0 +1,78 @@
+name: Bug Report
+description: Report agent issues, workflow failures, and system bugs
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please provide as much detail as possible.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Description
+      description: Clear description of what went wrong
+      placeholder: Describe the issue you encountered
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence/Reproduction Steps
+      description: Session logs, error messages, or steps to reproduce
+      placeholder: |
+        1. Run command/agent...
+        2. Observe behavior...
+        3. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened instead?
+      placeholder: Describe the expected outcome
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected?
+      options:
+        - daily-log-agent
+        - pr-reviewer agent
+        - Slash commands
+        - GitHub workflows
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How severe is this issue?
+      options:
+        - Critical (protocol violations, system failures)
+        - High (workflow blockers, major issues)
+        - Medium (standard bugs)
+        - Low (minor issues)
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Operating system, Claude Code version, repository context
+      placeholder: |
+        - OS: macOS/Windows/Linux
+        - Repository: movable-ink/front-end, etc.
+        - Working directory: ~/.claude, project repo, etc.
+    validations:
+      required: false

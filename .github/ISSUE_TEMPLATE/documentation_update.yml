@@ -1,0 +1,89 @@
+name: Documentation Update
+description: Request updates to README, command docs, templates, and guides
+title: "[DOCS] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us improve our documentation! Please provide details about what needs updating.
+
+  - type: dropdown
+    id: doc_type
+    attributes:
+      label: Documentation Type
+      description: What type of documentation needs updating?
+      options:
+        - README.md
+        - Slash command documentation
+        - Agent usage guides  
+        - Setup/installation guides
+        - Daily log documentation
+        - GitHub templates
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_issue
+    attributes:
+      label: Current Issue
+      description: What's wrong with the current documentation?
+      placeholder: |
+        - Missing information about new features
+        - Outdated instructions
+        - Unclear explanations
+        - Broken links or examples
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_changes
+    attributes:
+      label: Proposed Changes
+      description: What specific updates should be made?
+      placeholder: |
+        - Add section about /new-command
+        - Update installation steps
+        - Fix example code
+        - Add troubleshooting guide
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is this documentation update?
+      options:
+        - High (blocks user onboarding or causes confusion)
+        - Medium (improves clarity and usability)  
+        - Low (nice-to-have improvement)
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_users
+    attributes:
+      label: Affected Users
+      description: Who would benefit from this documentation update?
+      placeholder: |
+        - New users setting up the system
+        - Existing users learning new features
+        - Contributors to the project
+        - All users (general improvement)
+    validations:
+      required: false
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation Requirements
+      description: How should we verify the documentation updates are correct?
+      placeholder: |
+        - [ ] Test instructions on fresh environment
+        - [ ] Verify all links work
+        - [ ] Check examples execute correctly
+        - [ ] Review for clarity and completeness
+    validations:
+      required: false

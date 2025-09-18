@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Daily Log Questions
+    url: https://github.com/nicksteffens/claude-config/blob/main/daily-logs/README.md
+    about: Questions about daily logging workflows and procedures
+  - name: Claude Code Documentation
+    url: https://docs.anthropic.com/en/docs/claude-code
+    about: Official Claude Code documentation and guides
