@@ -36,6 +36,7 @@ Slash commands are invoked by typing `/command-name` in Claude Code. Available c
 - **`/commit-conventional`** - Guide for conventional commit formatting
 - **`/github-workflow`** - GitHub CLI-first operations with safety checks
 - **`/pr-review`** - Pull request review workflows
+- **`/pr-audit`** - Comprehensive audit of open PRs with priority scoring and Shortcut integration
 - **`/add-reviewers`** - Add reviewers to pull requests
 
 ## Agents
