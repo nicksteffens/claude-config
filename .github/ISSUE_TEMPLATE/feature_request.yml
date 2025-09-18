@@ -1,0 +1,81 @@
+name: Feature Request
+description: Request new slash commands, agent improvements, and enhancements
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Help us understand what you need.
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use Case
+      description: What problem would this feature solve?
+      placeholder: Describe the workflow or pain point this would address
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: How do you envision this working?
+      placeholder: |
+        - New slash command: /command-name
+        - Agent enhancement: improve xyz behavior
+        - Workflow improvement: automate abc process
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature_type
+    attributes:
+      label: Feature Type
+      description: What type of enhancement is this?
+      options:
+        - New slash command
+        - Agent improvement
+        - Workflow automation
+        - Documentation enhancement
+        - Repository template/tooling
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success Criteria
+      description: How will we know this feature is working correctly?
+      placeholder: |
+        - [ ] Feature accomplishes X
+        - [ ] Integration works with Y
+        - [ ] Documentation is updated
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature?
+      options:
+        - High (major workflow improvement)
+        - Medium (useful enhancement)
+        - Low (nice-to-have)
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation_notes
+    attributes:
+      label: Implementation Considerations
+      description: Any technical details, dependencies, or constraints to consider
+      placeholder: |
+        - Dependencies on other tools/APIs
+        - Integration requirements
+        - Potential challenges
+    validations:
+      required: false
