@@ -1,0 +1,23 @@
+{{page-title "Movable Ink" separator=" | " prepend=false}}
+<main id="data-sources-container">
+  <div class="flex flex-row bg-white min-h-screen">
+    <PersistentNavigation />
+    <div class="w-full">
+      {{outlet}}
+    </div>
+  </div>
+</main>
+
+{{#if (or this.currentUser.isOperator this.currentUser.isInternalEditor)}}
+  <KeyboardShortcut @key="alt+f" @down={{set this "quickSearchVisible" true}} />
+
+  {{#if this.quickSearchVisible}}
+    <QuickSearch @onClose={{set this "quickSearchVisible" false}} />
+  {{/if}}
+{{/if}}
+
+<GuideCenter />
+
+{{#if this.companySwitcher.error}}
+  <SwitchCompanyModal />
+{{/if}}
