@@ -11,6 +11,9 @@ debug/
 file-history/
 history.jsonl
 
+# Skills (contains org-specific data)
+skills/
+
 # Cache and temporary files
 *.cache
 *.tmp
