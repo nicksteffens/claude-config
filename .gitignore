@@ -7,6 +7,9 @@ todos/
 shell-snapshots/
 statsig/
 ide/
+debug/
+file-history/
+history.jsonl
 
 # Cache and temporary files
 *.cache
