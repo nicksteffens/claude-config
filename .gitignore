@@ -11,6 +11,11 @@ debug/
 file-history/
 history.jsonl
 
+# Skills (contains org-specific data)
+skills/*/
+!skills/README.md
+!skills/examples/
+
 # Cache and temporary files
 *.cache
 *.tmp
