@@ -17,11 +17,13 @@
 **This is non-negotiable and must happen automatically without being asked.**
 
 ### SESSION END PROTOCOL
-**At the end of each development session:** Use the `daily-log-agent` to autonomously create session logs with:
-- Main objectives accomplished  
+**At the end of each development session:** Use the `daily-log` skill to create session logs with:
+- Main objectives accomplished
 - Session duration and success rating (provided by user)
 - Challenges encountered and lessons learned
 - Follow-up items for future sessions
+
+The skill provides templates and file conventions - handle file operations directly in conversation.
 
 ## Permissions Overview
 
@@ -66,11 +68,11 @@
 ### 4. Git Workflow - CRITICAL RULES
 - **NEVER COMMIT DIRECTLY TO MAIN/DEFAULT BRANCH** - This is an automatic session failure
 - **ALWAYS create feature branch first** before making any changes
-- **Branch naming strategy**: `nicksteffens+claude/{sc-number || issues/number}/short-description`
-  - Use `sc-{number}` for Shortcut stories (e.g. `nicksteffens+claude/sc-165234/fix-user-invitations`)
-  - Use `issues/{number}` for GitHub issues (e.g. `nicksteffens+claude/issues/369/remove-empty-state-margins`)
-- **Workflow**: 
-  1. `git checkout -b nicksteffens+claude/{sc-number || issues/number}/short-description`
+- **Branch naming strategy**: `nicksteffens-claude/{sc-number || issues/number}/short-description`
+  - Use `sc-{number}` for Shortcut stories (e.g. `nicksteffens-claude/sc-165234/fix-user-invitations`)
+  - Use `issues/{number}` for GitHub issues (e.g. `nicksteffens-claude/issues/369/remove-empty-state-margins`)
+- **Workflow**:
+  1. `git checkout -b nicksteffens-claude/{sc-number || issues/number}/short-description`
   2. Make changes and commit to feature branch
   3. Push feature branch: `git push -u origin branch-name`
   4. Create PR from feature branch to main

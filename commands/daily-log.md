@@ -7,7 +7,7 @@ Update the daily log in the repository at the end of each session.
 /daily-log
 ```
 
-Executes safety checks then hands off to the daily-log-agent for autonomous workflow execution. The agent handles content generation while you provide session assessment and rating.
+Executes safety checks then uses the `daily-log` skill for log creation. The skill provides templates and file conventions for direct file operations in conversation.
 
 ## Repository Structure
 Daily logs are now organized in the repository under `daily-logs/` directory:
@@ -101,11 +101,11 @@ if [[ -f "$daily_log_file" ]] && grep -q "## $today" "$daily_log_file"; then
 fi
 ```
 
-### Agent Handoff
+### Skill Handoff
 ```bash
-# After safety checks pass, hand off to daily-log-agent
-echo "🤖 Daily log agent will handle workflow"
-exit 0  # Signal for daily-log-agent to take over
+# After safety checks pass, use daily-log skill
+echo "📝 Use daily-log skill for log creation"
+exit 0  # Safety checks complete, proceed with skill
 ```
 
 1. **Determine current month file**: Based on today's date (e.g., `daily-logs/2025/2025-08.md`)
