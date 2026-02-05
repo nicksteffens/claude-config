@@ -49,7 +49,12 @@ def load_skill(skill_name: str, skills_dir: Path = None) -> Tuple[Dict, str]:
     if skills_dir is None:
         skills_dir = Path.home() / ".claude" / "skills"
 
-    skill_path = skills_dir / f"{skill_name}.md"
+    # Check for directory structure first (new format)
+    skill_path = skills_dir / skill_name / "SKILL.md"
+
+    # Fall back to flat file (old format)
+    if not skill_path.exists():
+        skill_path = skills_dir / f"{skill_name}.md"
 
     if not skill_path.exists():
         raise FileNotFoundError(f"Skill not found: {skill_path}")
