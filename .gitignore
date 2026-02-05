@@ -10,6 +10,8 @@ ide/
 debug/
 file-history/
 history.jsonl
+cache/
+plugins/
 
 # Skills (contains org-specific data)
 skills/*/

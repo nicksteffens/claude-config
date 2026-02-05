@@ -1,0 +1,16 @@
+# Testing dependencies for Claude Code agents
+
+# Core testing framework
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+
+# Claude Agent SDK (optional - tests can run with mocks)
+# Uncomment to test with real SDK:
+# claude-agent-sdk>=0.1.10
+
+# Data validation
+pydantic>=2.0.0
+
+# YAML parsing for skill frontmatter
+pyyaml>=6.0
