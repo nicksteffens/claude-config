@@ -130,7 +130,7 @@ if [ "$IS_LOCAL" = true ]; then
     # Create .gitignore for .claude if it doesn't exist
     if [ ! -f "${REPO_ROOT}/.claude/.gitignore" ]; then
         cat > "${REPO_ROOT}/.claude/.gitignore" << 'GITIGNORE'
-# Claude runtime files
+# Claude runtime files (ignored)
 projects/
 todos/
 history.jsonl
@@ -138,9 +138,9 @@ cache/
 session-env/
 telemetry/
 
-# Skills and tests are team-shared - don't ignore
-!skills/
-!tests/
+# Skills and tests are team-shared (tracked by default)
+# To ignore a specific skill, add it here:
+#   skills/my-private-skill/
 GITIGNORE
     fi
 
@@ -166,16 +166,18 @@ SKILL_NAME_SNAKE="${SKILL_NAME//-/_}"  # my-skill -> my_skill
 SKILL_NAME_TITLE="$(echo "$SKILL_NAME" | sed 's/-/ /g' | sed 's/\b\(.\)/\u\1/g')"  # my-skill -> My Skill
 SKILL_CLASS_NAME="$(echo "$SKILL_NAME_TITLE" | sed 's/ //g')"  # My Skill -> MySkill
 
-SKILL_FILE="${SKILLS_DIR}/${SKILL_NAME}.md"
+SKILL_DIR="${SKILLS_DIR}/${SKILL_NAME}"
+SKILL_FILE="${SKILL_DIR}/SKILL.md"
 TEST_DIR="${TESTS_DIR}/${SKILL_NAME_SNAKE}"
 TEST_FILE="${TEST_DIR}/test_${SKILL_NAME_SNAKE}.py"
 
 # Check if skill already exists
-if [ -f "$SKILL_FILE" ]; then
-    error "Skill already exists: $SKILL_FILE"
+if [ -d "$SKILL_DIR" ]; then
+    error "Skill already exists: $SKILL_DIR"
 fi
 
 info "Creating skill: $SKILL_NAME"
+echo "  Skill dir: $SKILL_DIR"
 echo "  Skill file: $SKILL_FILE"
 if [ "$CREATE_TESTS" = "true" ]; then
     echo "  Test dir: $TEST_DIR"
@@ -183,8 +185,8 @@ if [ "$CREATE_TESTS" = "true" ]; then
 fi
 echo
 
-# Create skill file
-mkdir -p "$SKILLS_DIR"
+# Create skill directory and file
+mkdir -p "$SKILL_DIR"
 
 cat > "$SKILL_FILE" << EOF
 ---
