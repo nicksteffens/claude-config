@@ -1,86 +1,66 @@
 """Tests for shortcut-workspaces skill.
 
-[EDIT ME] Describe what aspects of the skill these tests cover.
+Tests verify the static reference data for Shortcut workspaces is loaded correctly.
 """
 
 import pytest
 from pathlib import Path
 
-from agents.tests.lib import AgentRunner, create_mock
-from agents.tests.lib.validators import (
-    TemplateValidator,
-    SecurityValidator,
-    MarkdownValidator,
-)
+from agents.tests.lib.skill_loader import load_skill
 
 
-class Testshortcutworkspaces:
-    """Test shortcut-workspaces skill behavior."""
+class TestShortcutWorkspacesContent:
+    """Test shortcut-workspaces skill content."""
 
-    @pytest.mark.asyncio
-    async def test_basic_functionality(self):
-        """[EDIT ME] Test basic skill behavior."""
-        mock_response = """[EDIT ME] Expected response from skill"""
+    def test_skill_loads(self):
+        """Verify skill file loads without errors."""
+        frontmatter, content = load_skill("shortcut-workspaces")
 
-        runner = AgentRunner(
-            skill_name="shortcut-workspaces",
-            mock_client=create_mock(mock_response)
-        )
+        assert frontmatter["name"] == "shortcut-workspaces"
+        assert "user_invocable" in frontmatter
+        assert len(content) > 0
 
-        result = await runner.execute("[EDIT ME] User request")
+    def test_contains_workspace_references(self):
+        """Verify skill contains both workspace references."""
+        _, content = load_skill("shortcut-workspaces")
 
-        assert result.success
-        # [EDIT ME] Add specific assertions
-        assert "[expected text]" in result.output
+        # Should contain both workspace sections
+        assert "CoherentPath Workspace (Primary)" in content
+        assert "Movable Ink Workspace (Legacy)" in content
 
-    @pytest.mark.asyncio
-    async def test_validates_output(self):
-        """[EDIT ME] Test output validation."""
-        mock_response = """[EDIT ME] Response to validate"""
+    def test_contains_mcp_tool_prefixes(self):
+        """Verify MCP tool prefixes are documented."""
+        _, content = load_skill("shortcut-workspaces")
 
-        runner = AgentRunner(
-            skill_name="shortcut-workspaces",
-            mock_client=create_mock(mock_response)
-        )
+        assert "mcp__shortcut__" in content
+        assert "mcp__shortcut-mi__" in content
 
-        result = await runner.execute("[EDIT ME] Request")
+    def test_contains_team_data(self):
+        """Verify skill contains team reference tables."""
+        _, content = load_skill("shortcut-workspaces")
 
-        assert result.success
-        # [EDIT ME] Use validators as appropriate
-        # Example: assert TemplateValidator.has_required_sections(result.output, ["Section1"])
+        # Should have team tables with UUIDs
+        assert "Team Name" in content
+        assert "UUID" in content
+        assert "Mention Name" in content
+        assert "Default Workflow ID" in content
 
+    def test_contains_user_info(self):
+        """Verify skill contains user information sections."""
+        _, content = load_skill("shortcut-workspaces")
 
-class TestshortcutworkspacesSecurity:
-    """Security tests for shortcut-workspaces skill."""
-
-    @pytest.mark.security
-    @pytest.mark.asyncio
-    async def test_no_path_traversal(self):
-        """Verify skill prevents path traversal attacks."""
-        malicious_input = "../../../etc/passwd"
-
-        # [EDIT ME] Adjust test based on how skill handles paths
-        assert SecurityValidator.no_path_traversal(malicious_input)
-
-    @pytest.mark.security
-    @pytest.mark.asyncio
-    async def test_input_validation(self):
-        """Verify skill validates user input properly."""
-        # [EDIT ME] Add tests for your skill's input validation
-        pass
+        # Should have Nick's info for both workspaces
+        assert "Nick's Information" in content
+        assert "@nicksteffens" in content
 
 
-class TestshortcutworkspacesEdgeCases:
-    """Edge case tests for shortcut-workspaces skill."""
+class TestShortcutWorkspacesMetadata:
+    """Test skill metadata and configuration."""
 
-    @pytest.mark.asyncio
-    async def test_empty_input(self):
-        """Test behavior with empty input."""
-        # [EDIT ME] Test edge cases specific to your skill
-        pass
+    def test_skill_metadata(self):
+        """Verify skill has correct metadata."""
+        frontmatter, _ = load_skill("shortcut-workspaces")
 
-    @pytest.mark.asyncio
-    async def test_large_input(self):
-        """Test behavior with large input."""
-        # [EDIT ME] Test edge cases specific to your skill
-        pass
+        assert frontmatter["user_invocable"] is True
+        assert "description" in frontmatter
+        assert len(frontmatter["description"]) > 0
