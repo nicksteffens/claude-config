@@ -4,3 +4,6 @@
 # Shortcut workspace/team references with org-specific UUIDs
 shortcut-workspaces/
 shortcut-teams/
+
+# Shortcut API tokens (real tokens, not sample)
+shortcut-tokens.json
