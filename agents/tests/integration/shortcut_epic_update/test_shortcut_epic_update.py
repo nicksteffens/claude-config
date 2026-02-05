@@ -46,6 +46,23 @@ class TestShortcutEpicUpdateContent:
         assert "Update Owner" in content
         assert "objective_ids" in content
 
+    def test_documents_json_formatting(self):
+        """Verify skill documents proper JSON formatting for bash."""
+        _, content = load_skill("shortcut-epic-update")
+
+        # Should warn about JSON formatting issues
+        assert "CRITICAL JSON Formatting" in content or "JSON" in content
+        # Should mention using variables for payloads
+        assert "PAYLOAD" in content
+
+    def test_documents_permissions(self):
+        """Verify skill documents required permissions."""
+        _, content = load_skill("shortcut-epic-update")
+
+        # Should document Bash permission requirement
+        assert "Bash" in content or "curl" in content
+        assert "jq" in content
+
     def test_no_hardcoded_tokens(self):
         """Verify skill doesn't contain hardcoded API tokens."""
         _, content = load_skill("shortcut-epic-update")

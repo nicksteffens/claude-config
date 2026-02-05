@@ -16,6 +16,13 @@ Updates Shortcut epics via the Shortcut API when the MCP server doesn't provide 
 - Changing epic owner
 - Any other epic field updates not supported by MCP
 
+## Permissions Required
+
+This skill requires **Bash tool permission** to:
+- Read API tokens from `~/.claude/skills/shortcut-tokens.json` using `jq`
+- Execute `curl` commands to update epics via Shortcut API
+- User should approve curl commands that modify external data
+
 ## API Tokens
 
 **CRITICAL**: Tokens are stored in `~/.claude/skills/shortcut-tokens.json`
@@ -57,6 +64,12 @@ Use the correct token key for the workspace:
      "owner_ids": ["uuid-here"]
    }
    ```
+
+   **CRITICAL JSON Formatting:**
+   - Avoid special characters like `!` in bash strings (causes history expansion)
+   - Use single quotes for JSON payloads with variables: `PAYLOAD='{"key":"value"}'`
+   - Then reference with double quotes: `-d "$PAYLOAD"`
+   - Test JSON validity before sending: `echo "$PAYLOAD" | jq .`
 
 5. **Execute the curl command**:
    ```bash
@@ -121,15 +134,16 @@ Steps:
 1. Workspace: CoherentPath → read coherentpath token
 2. Read token: `TOKEN=$(jq -r '.coherentpath' ~/.claude/skills/shortcut-tokens.json)`
 3. Epic ID: 186646
-4. Payload: `{"objective_ids": [186645]}`
-5. Execute curl:
+4. Build payload: `PAYLOAD='{"objective_ids": [186645]}'`
+5. Validate JSON: `echo "$PAYLOAD" | jq .`
+6. Execute curl:
    ```bash
    curl -X PUT "https://api.app.shortcut.com/api/v3/epics/186646" \
      -H "Content-Type: application/json" \
      -H "Shortcut-Token: $TOKEN" \
-     -d '{"objective_ids": [186645]}'
+     -d "$PAYLOAD"
    ```
-6. Verify response contains `"objective_ids": [186645]`
+7. Verify response contains `"objective_ids": [186645]`
 </example>
 
 ## Notes
