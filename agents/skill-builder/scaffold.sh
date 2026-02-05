@@ -4,9 +4,15 @@
 
 set -e
 
-SKILLS_DIR="${HOME}/.claude/skills"
-TESTS_DIR="${HOME}/.claude/agents/tests/integration"
-TEMPLATE_DIR="$(dirname "$0")/templates"
+SCRIPT_DIR="$(dirname "$0")"
+GLOBAL_SKILLS_DIR="${HOME}/.claude/skills"
+GLOBAL_TESTS_DIR="${HOME}/.claude/agents/tests/integration"
+TEMPLATE_DIR="$SCRIPT_DIR/templates"
+
+# Default to global skills
+SKILLS_DIR="$GLOBAL_SKILLS_DIR"
+TESTS_DIR="$GLOBAL_TESTS_DIR"
+IS_LOCAL=false
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -25,22 +31,27 @@ Arguments:
 
 Options:
     --user-invocable    Make skill invocable as slash command (default: false)
+    --local             Create in current repo's .claude/skills/ (repo-specific)
+    --global            Create in ~/.claude/skills/ (all projects, default)
     --no-tests          Skip test file creation
     --help              Show this help message
 
 Examples:
-    # Create basic skill with tests
+    # Create global skill (available everywhere)
     $0 my-new-skill
 
-    # Create user-invocable skill (accessible as /my-new-skill)
-    $0 my-new-skill --user-invocable
+    # Create repo-specific skill (only for this codebase)
+    $0 my-new-skill --local
+
+    # Create user-invocable repo skill
+    $0 my-new-skill --local --user-invocable
 
     # Create skill without tests
     $0 my-new-skill --no-tests
 
 Notes:
-    - Skill file will be created in: ${SKILLS_DIR}
-    - Test files will be created in: ${TESTS_DIR}
+    - Global skills: ~/.claude/skills/ (available in all projects)
+    - Local skills: .claude/skills/ in current repo (repo-specific, team-shared)
     - For interactive creation with guidance, use the skill-builder agent instead
 
 EOF
@@ -74,6 +85,14 @@ while [[ $# -gt 0 ]]; do
             USER_INVOCABLE="true"
             shift
             ;;
+        --local)
+            IS_LOCAL=true
+            shift
+            ;;
+        --global)
+            IS_LOCAL=false
+            shift
+            ;;
         --no-tests)
             CREATE_TESTS="false"
             shift
@@ -91,6 +110,46 @@ while [[ $# -gt 0 ]]; do
             ;;
     esac
 done
+
+# Set up directories based on local vs global
+if [ "$IS_LOCAL" = true ]; then
+    # Check if we're in a git repo
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        error "Not in a git repository. Use --global to create a global skill."
+    fi
+
+    REPO_ROOT=$(git rev-parse --show-toplevel)
+    REPO_NAME=$(basename "$REPO_ROOT")
+    SKILLS_DIR="${REPO_ROOT}/.claude/skills"
+    TESTS_DIR="${REPO_ROOT}/.claude/tests/integration"
+
+    # Create .claude directory structure
+    mkdir -p "$SKILLS_DIR"
+    mkdir -p "$TESTS_DIR"
+
+    # Create .gitignore for .claude if it doesn't exist
+    if [ ! -f "${REPO_ROOT}/.claude/.gitignore" ]; then
+        cat > "${REPO_ROOT}/.claude/.gitignore" << 'GITIGNORE'
+# Claude runtime files
+projects/
+todos/
+history.jsonl
+cache/
+session-env/
+telemetry/
+
+# Skills and tests are team-shared - don't ignore
+!skills/
+!tests/
+GITIGNORE
+    fi
+
+    # Source repo context if available
+    if [ -f "$SCRIPT_DIR/repo-context.sh" ]; then
+        source "$SCRIPT_DIR/repo-context.sh"
+        REPO_INFO=$(get_repo_info "$REPO_ROOT")
+    fi
+fi
 
 # Validate skill name
 if [ -z "$SKILL_NAME" ]; then
