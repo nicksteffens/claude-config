@@ -1,0 +1,6 @@
+# Ignore skills containing sensitive organization data
+# (team UUIDs, user UUIDs, workflow IDs, API tokens)
+
+# Shortcut workspace/team references with org-specific UUIDs
+shortcut-workspaces/
+shortcut-teams/

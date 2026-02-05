@@ -13,16 +13,16 @@ history.jsonl
 cache/
 plugins/
 
-# Skills (contains org-specific data)
-skills/*/
-!skills/README.md
-!skills/examples/
+# Skills are tracked by default (team-shared)
+# To ignore a specific skill locally, add to your local .gitignore:
+#   .claude/skills/my-private-skill/
 
 # Cache and temporary files
 *.cache
 *.tmp
 *.log
 .update.lock
+stats-cache.json
 
 # OS generated files
 .DS_Store
