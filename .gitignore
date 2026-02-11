@@ -39,3 +39,9 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Task session data
+tasks/
+
+# Skills manifest (local state)
+.claude-skills-manifest.json
