@@ -1,0 +1,55 @@
+{
+  "_instructions": [
+    "Copy this file to shortcut-workspaces-data.json and fill in your organization's data",
+    "This file structure separates sensitive workspace data from the tracked skill documentation",
+    "The actual data file (shortcut-workspaces-data.json) is gitignored for security"
+  ],
+  "coherentpath": {
+    "workspace_name": "CoherentPath",
+    "mcp_prefix": "mcp__shortcut__",
+    "user": {
+      "name": "Your Name",
+      "mention": "your-mention-name",
+      "uuid": "your-user-uuid-here",
+      "team_memberships": ["Team Name 1", "Team Name 2"]
+    },
+    "teams": [
+      {
+        "name": "Example Team 1",
+        "uuid": "team-uuid-1",
+        "mention": "team-mention-1",
+        "workflow_id": 500000001
+      },
+      {
+        "name": "Example Team 2",
+        "uuid": "team-uuid-2",
+        "mention": "team-mention-2",
+        "workflow_id": 500000002
+      }
+    ]
+  },
+  "movableink": {
+    "workspace_name": "Movable Ink",
+    "mcp_prefix": "mcp__shortcut-mi__",
+    "user": {
+      "name": "Your Name",
+      "mention": "your-mention-name",
+      "uuid": "your-user-uuid-here",
+      "team_memberships": ["Team Name A", "Team Name B"]
+    },
+    "teams": [
+      {
+        "name": "Example Team A",
+        "uuid": "team-uuid-a",
+        "mention": "team-mention-a",
+        "workflow_id": 500000010
+      },
+      {
+        "name": "Example Team B",
+        "uuid": "team-uuid-b",
+        "mention": "team-mention-b",
+        "workflow_id": 500000020
+      }
+    ]
+  }
+}

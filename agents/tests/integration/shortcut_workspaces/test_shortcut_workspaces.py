@@ -24,9 +24,9 @@ class TestShortcutWorkspacesContent:
         """Verify skill contains both workspace references."""
         _, content = load_skill("shortcut-workspaces")
 
-        # Should contain both workspace sections
-        assert "CoherentPath Workspace (Primary)" in content
-        assert "Movable Ink Workspace (Legacy)" in content
+        # Should reference both workspaces in examples/docs
+        assert "CoherentPath" in content or "coherentpath" in content
+        assert "Movable Ink" in content or "movableink" in content
 
     def test_contains_mcp_tool_prefixes(self):
         """Verify MCP tool prefixes are documented."""
@@ -36,22 +36,22 @@ class TestShortcutWorkspacesContent:
         assert "mcp__shortcut-mi__" in content
 
     def test_contains_team_data(self):
-        """Verify skill contains team reference tables."""
+        """Verify skill documents how to access team data."""
         _, content = load_skill("shortcut-workspaces")
 
-        # Should have team tables with UUIDs
-        assert "Team Name" in content
-        assert "UUID" in content
-        assert "Mention Name" in content
-        assert "Default Workflow ID" in content
+        # Should reference the data file and show structure
+        assert "shortcut-workspaces-data.json" in content
+        assert "teams" in content
+        assert "uuid" in content or "UUID" in content
+        assert "mention" in content
 
     def test_contains_user_info(self):
-        """Verify skill contains user information sections."""
+        """Verify skill documents how to access user information."""
         _, content = load_skill("shortcut-workspaces")
 
-        # Should have Nick's info for both workspaces
-        assert "Nick's Information" in content
-        assert "@nicksteffens" in content
+        # Should show how to get user data from JSON file
+        assert "user" in content
+        assert "jq" in content  # Shows how to query the data
 
 
 class TestShortcutWorkspacesMetadata:
