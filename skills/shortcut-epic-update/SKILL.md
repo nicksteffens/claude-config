@@ -11,6 +11,7 @@ Updates Shortcut epics via the Shortcut API when the MCP server doesn't provide 
 ## When to Use
 
 - Linking epics to objectives (`objective_ids`)
+- Assigning epics to teams (`group_ids` - teams are called "groups" in the API)
 - Changing epic state or workflow state
 - Updating epic name or description
 - Changing epic owner
@@ -58,6 +59,7 @@ Use the correct token key for the workspace:
    ```json
    {
      "objective_ids": [186645],
+     "group_ids": ["698e17ad-ae60-4ddd-af00-37d5ca5810a2"],
      "name": "New epic name",
      "description": "Updated description",
      "state": "in progress",
@@ -65,8 +67,10 @@ Use the correct token key for the workspace:
    }
    ```
 
+   **Note**: Teams are called "groups" in Shortcut's API, so use `group_ids` to assign teams.
+
    **CRITICAL JSON Formatting:**
-   - Avoid special characters like `!` in bash strings (causes history expansion)
+   - Avoid exclamation marks (!) in bash strings - causes history expansion
    - Use single quotes for JSON payloads with variables: `PAYLOAD='{"key":"value"}'`
    - Then reference with double quotes: `-d "$PAYLOAD"`
    - Test JSON validity before sending: `echo "$PAYLOAD" | jq .`
@@ -87,6 +91,14 @@ Use the correct token key for the workspace:
 ```json
 {
   "objective_ids": [186645]
+}
+```
+
+### Assign to Team
+**IMPORTANT**: In Shortcut's API, teams are called "groups". Use `group_ids` (not `team_ids`):
+```json
+{
+  "group_ids": ["698e17ad-ae60-4ddd-af00-37d5ca5810a2"]
 }
 ```
 
@@ -115,6 +127,7 @@ Use the correct token key for the workspace:
 ## Important Guidelines
 
 - **Only include fields you want to change** - omitted fields remain unchanged
+- **Teams = Groups**: In Shortcut's API, teams are called "groups" - always use `group_ids` not `team_ids`
 - **Use proper JSON formatting** in the curl `-d` parameter
 - **Validate epic ID** exists before updating
 - **Check the response** for errors (4xx/5xx status codes)
@@ -144,6 +157,30 @@ Steps:
      -d "$PAYLOAD"
    ```
 7. Verify response contains `"objective_ids": [186645]`
+</example>
+
+<example>
+User: "Assign epic 187449 to Design System & Front End Guild Team"
+
+Steps:
+1. Workspace: CoherentPath → read coherentpath token
+2. Read token: `TOKEN=$(jq -r '.coherentpath' ~/.claude/skills/shortcut-tokens.json)`
+3. Epic ID: 187449
+4. Team ID: 698e17ad-ae60-4ddd-af00-37d5ca5810a2 (from shortcut-workspaces skill)
+5. Build payload (teams use `group_ids`):
+   ```bash
+   cat > /tmp/epic_update.json << 'EOF'
+   {"group_ids": ["698e17ad-ae60-4ddd-af00-37d5ca5810a2"]}
+   EOF
+   ```
+6. Execute curl:
+   ```bash
+   curl -X PUT "https://api.app.shortcut.com/api/v3/epics/187449" \
+     -H "Content-Type: application/json" \
+     -H "Shortcut-Token: $TOKEN" \
+     -d @/tmp/epic_update.json
+   ```
+7. Verify response contains `"group_ids": ["698e17ad-ae60-4ddd-af00-37d5ca5810a2"]`
 </example>
 
 ## Notes
