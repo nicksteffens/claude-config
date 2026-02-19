@@ -7,14 +7,24 @@ This repository contains Claude Code configuration files and development rules f
 **Do not clone this repository directly.** Local configuration files will cause dirty changes on your machine.
 
 **Instead: Fork this repository to your personal GitHub account**
+
+Using the GitHub web UI:
 ```bash
 # 1. Fork on GitHub: https://github.com/nicksteffens/claude-config/fork
 # 2. Clone your fork
 git clone https://github.com/YOUR-USERNAME/claude-config.git
-
-# 3. Follow the setup steps below
-# 4. Create branches and submit PRs for contributions
 ```
+
+Or using the GitHub CLI (faster):
+```bash
+# Fork and clone automatically
+gh repo fork nicksteffens/claude-config
+
+# Or fork without cloning
+gh repo fork nicksteffens/claude-config --no-clone
+```
+
+Then follow the setup steps below and create branches for contributions.
 
 This way, your personal configuration stays separate and doesn't pollute your working directory.
 
