@@ -9,6 +9,7 @@ statsig/
 ide/
 debug/
 file-history/
+telemetry/
 history.jsonl
 cache/
 plugins/
