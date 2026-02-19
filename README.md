@@ -21,6 +21,14 @@ This will fork to your account and clone directly to `~/.claude` where Claude Co
 git clone https://github.com/YOUR-USERNAME/claude-config.git ~/.claude
 ```
 
+**If you cloned the original repo first (forgot to fork):**
+```bash
+cd ~/.claude
+
+# Update remote to point to your fork
+git remote set-url origin https://github.com/YOUR-USERNAME/claude-config.git
+```
+
 Then follow the setup steps below and create branches for contributions.
 
 This way, your personal configuration stays separate and doesn't pollute your working directory.
