@@ -17,12 +17,11 @@ git clone https://github.com/YOUR-USERNAME/claude-config.git
 
 Or using the GitHub CLI (faster):
 ```bash
-# Fork and clone automatically
-gh repo fork nicksteffens/claude-config
-
-# Or fork without cloning
-gh repo fork nicksteffens/claude-config --no-clone
+# Fork and clone to ~/.claude automatically
+gh repo fork nicksteffens/claude-config --clone
 ```
+
+**Clone location:** This repo should be cloned/forked to `~/.claude` so Claude Code can find your configuration.
 
 Then follow the setup steps below and create branches for contributions.
 
