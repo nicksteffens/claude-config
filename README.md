@@ -25,6 +25,17 @@ git clone https://github.com/YOUR-USERNAME/claude-config.git ~/.claude
 ```bash
 cd ~/.claude
 
+# Fork and set up remotes automatically (recommended)
+gh repo fork --remote
+
+# This will:
+# - Fork the repo to your account
+# - Set the fork as your 'origin' remote
+# - Keep the original as 'upstream' remote
+```
+
+Or manually:
+```bash
 # Update remote to point to your fork
 git remote set-url origin https://github.com/YOUR-USERNAME/claude-config.git
 ```
