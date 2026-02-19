@@ -2,6 +2,22 @@
 
 This repository contains Claude Code configuration files and development rules for Movable Ink projects.
 
+## ⚠️ Important: For Users
+
+**Do not clone this repository directly.** Local configuration files will cause dirty changes on your machine.
+
+**Instead: Fork this repository to your personal GitHub account**
+```bash
+# 1. Fork on GitHub: https://github.com/nicksteffens/claude-config/fork
+# 2. Clone your fork
+git clone https://github.com/YOUR-USERNAME/claude-config.git
+
+# 3. Follow the setup steps below
+# 4. Create branches and submit PRs for contributions
+```
+
+This way, your personal configuration stays separate and doesn't pollute your working directory.
+
 ## Files
 
 - **`CLAUDE.md`** - Development rules and protocols for Claude Code sessions
