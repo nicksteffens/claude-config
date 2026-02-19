@@ -45,3 +45,8 @@ tasks/
 
 # Skills manifest (local state)
 .claude-skills-manifest.json
+
+# Local config and backups
+mcp_config_template.json
+backups/
+paste-cache/
