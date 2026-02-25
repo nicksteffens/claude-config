@@ -60,6 +60,19 @@ Use `AskUserQuestion` with these question sets:
    - Separate with `---` horizontal rule
    - Each session gets its own "Session Overview" block
 
+### Step 3: Commit the Log Entry
+
+After writing the log entry, ALWAYS commit it to the ~/.claude git repo:
+
+```bash
+git -C ~/.claude add daily-logs/
+git -C ~/.claude commit -m "docs: add daily log for YYYY-MM-DD"
+```
+
+IMPORTANT: `~/.claude` IS a git repo (nicksteffens/claude-config).
+Use `git -C ~/.claude` to operate on it from any working directory.
+Do NOT push — the user will push when ready.
+
 ## Session Template
 
 ```markdown
