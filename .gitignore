@@ -51,3 +51,6 @@ tasks/
 mcp_config_template.json
 backups/
 paste-cache/
+
+# Plans (working drafts)
+plans/
