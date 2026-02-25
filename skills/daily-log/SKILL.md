@@ -65,13 +65,15 @@ Use `AskUserQuestion` with these question sets:
 After writing the log entry, ALWAYS commit it to the ~/.claude git repo:
 
 ```bash
+git -C ~/.claude checkout main
 git -C ~/.claude add daily-logs/
 git -C ~/.claude commit -m "docs: add daily log for YYYY-MM-DD"
 ```
 
 IMPORTANT: `~/.claude` IS a git repo (nicksteffens/claude-config).
 Use `git -C ~/.claude` to operate on it from any working directory.
-Do NOT push — the user will push when ready.
+Daily logs should ALWAYS be committed to the main branch.
+After committing, ask the user if they'd like to push (`git -C ~/.claude push origin main`).
 
 ## Session Template
 
