@@ -39,6 +39,7 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:developer.mozilla.org)",
       "mcp__your-mcp-server__*",
+      "mcp__shortcut__*",
       "Skill(daily-log)",
       "Skill(your-custom-skill)"
     ],
@@ -72,7 +73,8 @@
       "WebFetch",
       "WebSearch",
       "Bash(git commit --amend:*)",
-      "Bash(git commit -a --amend:*)"
+      "Bash(git commit -a --amend:*)",
+      "mcp__shortcut-legacy__*"
     ],
     "additionalDirectories": [
       "/path/to/your/project1",
