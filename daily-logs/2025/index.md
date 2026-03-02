@@ -8,9 +8,40 @@ This directory contains all daily log entries for 2025, organized by month.
 - **[2025-09.md](2025-09.md)** - September 2025 (20+ sessions)
 - **[2025-10.md](2025-10.md)** - October 2025 (2 sessions)
 - **[2025-11.md](2025-11.md)** - November 2025 (3 sessions)
-- **[2025-12.md](2025-12.md)** - December 2025 (current)
+- **[2025-12.md](2025-12.md)** - December 2025 (27 sessions)
 
 ## Monthly Summaries
+
+### December 2025 Summary
+**Total Sessions:** 27 sessions across 9 days
+**Primary Focus:** ESLint infrastructure, MCP server, release automation, feature flag removal, content layouts
+**Average Rating:** ~9/10
+
+**Key Achievements:**
+- Researched Percy replacement initiative with odiff and Ember Puppeteer screenshot addon
+- Created `npm-oidc-release` GitHub Action and migrated multiple repos to use it
+- Implemented ESLint rules for `@movable/ui` as npm workspace package (`@movable/eslint-plugin-ui`)
+- Created MCP server for `@movable/ui` component library; enabled via `npx` (issue #501)
+- Created `prefer-ink-components` ESLint rule to enforce Ink component adoption
+- Removed `persistentNavigation` feature flag (SC-173037) across front-end, railsapp, and canvas
+- Implemented PATCH endpoint to clear trylink revisions (sc-172319)
+- Removed Data Exports Ember app references from railsapp (SC-178242)
+- Removed `studio_dynamic_fields_library` feature flag (SC-153165)
+- Updated content layouts in `@movable/ui` with new breakpoints; fixed nested container bug (issue #516)
+- Fixed responsive layout issues in Studio `SevenThreeSplitContentLayout` and `TenColumnFullContentLayout`
+- Created Front-End Year in Review 2025 Notion document and personal year in review
+- Created Claude Code Skills system (`SKILL.md` convention)
+
+**Notable Technical Work:**
+- ESLint plugin as npm workspace package — subpath exports approach abandoned in favor of workspace approach
+- MCP npx support: `npx -y @movable/ui-mcp` enables zero-install usage across all repos
+- `npm-oidc-release` handles OIDC token-based npm publishing for monorepo workspaces
+- Nested MUI Grid v2 containers cause unexpected responsive behavior — `container` prop on child elements breaks sizing
+
+**Performance Trends:**
+- Consistently high-rated sessions (most 9-10/10), one 4/10 for commitlint CI loop failure
+- Highly productive across infrastructure, UI components, and feature flag removal
+- Strong documentation habits — GitHub issues and PR descriptions consistently thorough
 
 ### November 2025 Summary
 **Total Sessions:** 3 sessions across 2 days
@@ -119,7 +150,7 @@ This directory contains all daily log entries for 2025, organized by month.
 - Consistent 8-10/10 ratings on autonomous execution sessions
 
 ## Statistics
-- **Total sessions**: 45+ logged sessions (August - November 2025)
+- **Total sessions**: 72+ logged sessions (August - December 2025)
 - **Primary repositories**: front-end, ui, railsapp, claude-config, front-end-infra
 - **Success rate**: Most sessions rated 6+ (successful), with notable 10/10 streaks in October and November
 - **Key focus areas**: Frontend development, Claude workflow optimization, GitHub automation, component consolidation, API integrations, upgrade planning
