@@ -47,6 +47,10 @@ tasks/
 # Skills manifest (local state)
 .claude-skills-manifest.json
 
+# Personality runtime files
+statusline-command.sh
+settings.local.json
+
 # Local config and backups
 *.bak
 mcp_config_template.json
