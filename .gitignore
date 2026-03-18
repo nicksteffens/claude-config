@@ -48,9 +48,13 @@ tasks/
 .claude-skills-manifest.json
 
 # Local config and backups
+*.bak
 mcp_config_template.json
 backups/
 paste-cache/
+
+# Session files
+sessions/
 
 # Plans (working drafts)
 plans/
