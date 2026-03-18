@@ -109,6 +109,10 @@ Our collaborative sessions are systematically documented to track progress, insi
 
 See [daily-logs/README.md](daily-logs/README.md) for complete documentation and usage instructions.
 
+## Plugins
+
+- **[Claude Personalities](https://github.com/nicksteffens/claude-personalities)** - Swap Claude's tone, statusline quips, and spinner verbs with Star Wars droid personalities. Install via `/plugin marketplace add nicksteffens/claude-personalities`.
+
 ## Documentation
 
 Additional setup guides and documentation:
