@@ -12,6 +12,7 @@ Skills are model-invoked (Claude decides when to use them based on context) vs s
 |-------|-------------|
 | `shortcut-teams` | Static reference for Shortcut team UUIDs - prevents repeated API calls |
 | `daily-log` | Reliable daily log management with correct file paths and templates |
+| `personality` | Swap droid personalities — see [`~/.claude/personalities/README.md`](../personalities/README.md) |
 
 ## Creating Your Own Skills
 
