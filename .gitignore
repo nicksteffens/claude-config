@@ -18,6 +18,14 @@ plugins/
 # To ignore a specific skill locally, add to your local .gitignore:
 #   .claude/skills/my-private-skill/
 
+# Image cache (screenshots from sessions)
+image-cache/
+
+# Git-ai installed skills (symlinks to ~/.git-ai/skills/)
+skills/ask
+skills/git-ai-search
+skills/prompt-analysis
+
 # Cache and temporary files
 *.cache
 *.tmp
