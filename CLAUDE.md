@@ -125,4 +125,10 @@ The skill provides templates and file conventions - handle file operations direc
 
 ---
 
+## Second Brain
+
+The second-brain vault lives at `~/github/nicksteffens/second-brain/`. When starting sessions in work repos, use `--add-dir ~/github/nicksteffens/second-brain` to give Claude read/write access to the vault for session logging, captures, and knowledge retrieval.
+
+---
+
 **Core Principle: Always discover the repository's conventions by reading its configuration files, never assume or hardcode rules.**
