@@ -61,6 +61,12 @@ Data file includes MCP tool prefixes for each workspace:
 
 If a piece of work logically belongs to a legacy team that no longer exists in CoherentPath, find the closest CoherentPath team (e.g., legacy "Studio Core" → CoherentPath "Designer Team" or "Tactics Team") and use that. Never fall back to the legacy workspace for writes.
 
+### Always pass `workflow` explicitly when creating stories
+
+**When calling `mcp__shortcut__stories-create`, always pass `workflow: 500203877` (Building) explicitly.** Do not rely on the team's default — some teams (e.g., Designer Team) have multiple workflows assigned in Shortcut admin (Building + Bugs Workflow), and the MCP's selection rule when both exist is not deterministic. Story type (`feature` / `bug` / `chore`) is metadata; it does NOT affect workflow routing — that's set by `workflow_id`.
+
+Forbidden workflow IDs are listed in `.coherentpath.forbidden_workflow_ids`. Workflow `500326170` (Bugs Workflow) is on the forbidden list — Designer Team has it assigned upstream but we do not use it. Any new story should land in Building (`500203877`).
+
 ## Data Structure
 
 The JSON file has this structure:
