@@ -52,8 +52,14 @@ When you need team information:
 ## MCP Tool Prefixes
 
 Data file includes MCP tool prefixes for each workspace:
-- **CoherentPath (Primary)**: Check `.coherentpath.mcp_prefix` → `mcp__shortcut__*`
-- **Movable Ink (Legacy)**: Check `.movableink.mcp_prefix` → `mcp__shortcut-mi__*`
+- **CoherentPath (Primary, all writes)**: `.coherentpath.mcp_prefix` → `mcp__shortcut__*`
+- **Movable Ink (Legacy, READ-ONLY)**: `.movableink.mcp_prefix` → `mcp__shortcut-legacy__*`
+
+### Workspace routing rule
+
+**All Shortcut writes go to CoherentPath (`mcp__shortcut__*`).** This includes story creation, comments, status updates, link management — any mutation. The legacy MCP exists only for reading old cards from the pre-EPD `movableink` workspace.
+
+If a piece of work logically belongs to a legacy team that no longer exists in CoherentPath, find the closest CoherentPath team (e.g., legacy "Studio Core" → CoherentPath "Designer Team" or "Tactics Team") and use that. Never fall back to the legacy workspace for writes.
 
 ## Data Structure
 
